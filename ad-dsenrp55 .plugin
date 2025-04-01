@@ -1,0 +1,31 @@
+#!name = dsenrp55学习网站
+#!desc = 去广告，精简\nScheme选填播放器，不填默认Safari
+#!author=fishdown
+#!openUrl = https://dsenrp55.com/tabbar1
+#!homepage = https://dsenrp55.com/tabbar1
+#!input=Scheme
+#!icon = https://raw.githubusercontent.com/fishdown/Icon/master/app/dsenrp55.png
+
+[Mitm]
+hostname = dsenrp55.com,ghfgnm.com
+
+
+[Rewrite] 
+^https:\/\/dsenrp55\.com\/tabbar[356]$ 302 https://dsenrp55.com/tabbar1
+^https:\/\/dsenrp55\.com\/tabbar response-body-replace-regex </head> </head><style>.swiperBox,.adBox,.ad,.adItem,.start-page-container,.n-container,.intercept-18,div.van-tabbar-item:first-of-type,div.van-tabbar-item:last-of-type{display:none!important}img.back{margin:40px!important}</style>
+
+[Argument]
+on-off = switch,true,tag=跳转外部播放器,desc=默认开启
+[Script]
+http-request ^https:\/\/ghfgnm\.com\/mmapi\/m3u8\/p\/.+\.m3u8 script-path=dsenrp55-m3u8.js, requires-body=true, timeout=60, img-url=https://raw.githubusercontent.com/fishdown/Icon/master/app/dsenrp55.png,enable={on-off},tag=强身健体
+
+
+
+
+
+
+
+
+
+
+
